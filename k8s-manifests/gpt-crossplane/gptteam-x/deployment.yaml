@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpt-crossplane-gptteam-x-deployment
+  namespace: gpt-crossplane
+  labels:
+    app: "gpt-crossplane-gptteam-x"
+    backstage.io/kubernetes-id: "gpt-crossplane-gptteam-x"
+    service: "gptteam-x"
+    system: "gpt-crossplane"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "gpt-crossplane-gptteam-x"
+      service: "gptteam-x"
+      system: "gpt-crossplane"
+  template:
+    metadata:
+      labels:
+        app: "gpt-crossplane-gptteam-x"
+        backstage.io/kubernetes-id: "gpt-crossplane-gptteam-x"
+        service: "gptteam-x"
+        system: "gpt-crossplane"
+    spec:
+      containers:
+        - name: gpt-crossplane-gptteam-x
+          image: <your-dockerhub-username>/gpt-crossplane-gptteam-x:0
+          ports:
+            - containerPort: 80
