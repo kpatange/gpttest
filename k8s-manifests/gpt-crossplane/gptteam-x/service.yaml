@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gpt-crossplane-gptteam-x-service
+  namespace: gpt-crossplane
+spec:
+  selector:
+    app: gpt-crossplane-gptteam-x
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
